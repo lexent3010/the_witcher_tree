@@ -1,5 +1,12 @@
+const SET_CURRENT_PERSON = 'SET_CURRENT_PERSON';
+const SET_STATE = 'SET_STATE';
+const SET_SUBJECTS_COUNT = 'SET_SUBJECTS_COUNT';
+const SET_SUBJECTS = 'SET_SUBJECTS';
+const BACK = 'BACK';
 
-let state = [
+
+let initialState = {
+    person: [
         {
             id: 1,
             name: "Nilfgaard",
@@ -239,38 +246,75 @@ let state = [
             image: "bran.jpg",
             parent: 3
         }
-    ];
-
-let subjectsCount = (parent, state) => {
-    let parentId = parent;
-    let acc = [parentId];
-    let findParent = (state) => {
-        if (parentId === undefined) {
-            return acc;
-        }
-        let currentItem = state.filter(p => p.id === parentId);
-        parentId = currentItem[0].parent;
-        if (parentId === undefined) {
-            return acc
-        } else {
-            acc.push(parentId);
-            return findParent(state);
-        }
-    };
-    return findParent(state)
+    ],              // Новый массив данных заливать сюда!)
+    currentPerson: {},
+    subjectsCount: null,
+    subjects: []
 };
 
-
-
-let initialState = {
-    person: []
-};
-initialState.person = state.map(p => {
-    return  {id: p.id, name: p.name, image: p.image, post: p.post, parent: p.parent, listOfParents: subjectsCount(p.parent, state)}
-});
 
 const AppReducer = (state = initialState, action) => {
-return state;
+    const addSubjectsCount = (parentId, state) => {                // С помощью рекурсии добавляет значение id родителей всех
+        let counter = parentId;                                   // уровней в соответствующий ключ
+        let acc = [counter];
+        let findParent = (state) => {
+            if (counter === undefined) {
+                return acc;
+            }
+            let currentItem = state.filter(p => p.id === counter);
+            counter = currentItem[0].parent;
+            if (counter === undefined) {
+                return acc
+            }
+            acc.push(counter);
+            return findParent(state);
+        };
+        return findParent(state)
+    };
+    switch (action.type) {
+        case SET_CURRENT_PERSON:
+            return {
+                ...state, currentPerson: action.person
+
+            };
+        case SET_STATE:
+            return {
+                ...state, person: state.person.map(p => ({            // Добавляет новый ключ "Список всех родителей"
+                    id: p.id,                                         // который потом используется для подсчета подчиненных
+                    name: p.name,
+                    image: p.image,
+                    post: p.post,
+                    parent: p.parent,
+                    listOfParentsId: addSubjectsCount(p.parent, state.person)
+                }))
+            };
+        case SET_SUBJECTS_COUNT:
+            return {
+                ...state, subjectsCount: state.app.person           // Фильтрует по родителям, длинна массива есть
+                    .filter(p => [action.person.id]                 // количество подчиненных
+                        .every(el => p.listOfParentsId.includes(el))).length
+            };
+        case SET_SUBJECTS:
+            return {
+                ...state,
+                /*subjects: [state.app.person                        // Изначально пустой массив, поэтому подчеркивает, но работает
+                    .filter(p => p.parent === currentPerson.id)]*/   // Когда он вызывается, там уже есть данные.
+            };                                                     // Возможно так делать не стоит, сообщите если я не прав.
+        case BACK:
+            let back = (currentPerson) => {
+                state.person.find(p => p.id === currentPerson.parent)
+            };
+        return {
+            ...state, currentPerson: back(state.currentPerson)
+        };
+        default:
+            return state;
+    }
 };
+
+export const setState = () => ({type: SET_STATE});
+export const setCurrentPerson = (person) => ({type: SET_CURRENT_PERSON, person});
+export const setSubjectsCount = (person) => ({type: SET_SUBJECTS_COUNT, person});
+export const back = () => ({type: BACK});
 
 export default AppReducer;

@@ -4,17 +4,15 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import store from './redux/Store';
-import {BrowserRouter} from "react-router-dom";
 import {setState} from "./redux/AppReducer";
 import {Provider} from "react-redux";
 
 let renderTree = (state) => {
     ReactDOM.render(
-        <BrowserRouter>
             <Provider store={store}>
-                <App state={state}/>
+                <App currentPage={state.app.currentPage}/>
             </Provider>
-        </BrowserRouter>, document.getElementById('root'));
+       , document.getElementById('root'));
 };
 
 store.dispatch(setState());

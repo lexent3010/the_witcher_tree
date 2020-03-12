@@ -1,25 +1,23 @@
 import React from 'react';
 import '../App.css';
-import {NavLink} from "react-router-dom";
 
 
 const HomePage = (props) => {
     return (
         <div>
             <div>
-                <NavLink to=''>
-                    <div className='logoBlock'><img className='fractionImg' src={require('../images/logo.png')} alt="logo"/>
+                    <div className='logoBlock'>
+                        <img className='fractionImg' src={require('../images/logo.png')} alt="logo"/>
                     </div>
-                </NavLink>
                 <div className='fractionsLogoBlock'>
-                    {props.state.app.person.filter(p => p.parent === undefined)
-                        .map(p => <NavLink to={'/' + p.id}>
-                            <div className='fraction'>
-                                <div><img className='fractionImg' src={require('../images/' + p.image)} alt={p.name}/></div>
-                                <div>{p.name}</div>
-                                <div>{p.post}</div>
-                            </div>
-                        </NavLink>)}
+                    {props.currentPerson.map(person =>
+                        <div key={person.id} className='fraction' onClick={() => {
+                            props.setCurrentPerson(person);
+                        }}>
+                        <div><img className='fractionImg' src={require('../images/' + person.image)} alt={person.name}/></div>
+                        <div>{person.name}</div>
+                        <div>{person.post}</div>
+                    </div>)}
                 </div>
             </div>
         </div>

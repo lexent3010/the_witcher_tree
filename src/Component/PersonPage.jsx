@@ -1,43 +1,29 @@
 import React from 'react';
-import {NavLink} from "react-router-dom";
 
 
 const PersonPage = (props) => {
-
-    let path = (parentId) => {
-        if (parentId === undefined) {
-            return ''
-        } else {
-            return parentId
-        }
-    };
-
-    props.setSubjectsCount(props.person);
-
     return (
         <div>
             <div>{props.subjectsCount}</div>
-            <div onClick={() => {
-                props.back()
-            }}>
+            <div onClick={props.back}>
                 back
             </div>
-
-            <img src={require('../images/logo.png')} alt='logo' width='100'/>
-
-            {props.currentPerson.name}
+            <div onClick={props.setHomePage}><img src={require('../images/logo.png')} alt='logo' width='100'/></div>
+            {props.currentPerson.map(person => <div>
+                <img src={require('../images/' + person.image)} alt={person.name}/>
+                {person.name}
+                {person.post}
+            </div>)}
             <div>
-                <img src={require('../images/' + props.currentPerson.image)} alt={props.currentPerson.name}/>
-            </div>
-            <div>
-                {props.subjects.map(p =>
-                    <div key={p.id} onClick={() => {
-                        props.setCurrentPerson(p)
+                {props.subjects.map(person =>
+                    <div key={person.id} onClick={() => {
+                        props.setCurrentPerson(person)
                     }}>
-                        <div>{p.name}</div>
+                        <div>{person.name}</div>
                         <div>
-                            <img src={require('../images/' + p.image)} alt={p.name} width='100'/>
+                            <img src={require('../images/' + person.image)} alt={person.name} width='100'/>
                         </div>
+                        <div>{person.post}</div>
                     </div>)}
             </div>
         </div>

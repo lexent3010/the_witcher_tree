@@ -1,35 +1,29 @@
-import React from 'react';
 import {connect} from "react-redux";
 import PersonPage from "./PersonPage";
-import {back, setCurrentPerson, setSubjectsCount} from "../redux/AppReducer";
-import {NavLink} from "react-router-dom";
+import {back, setCurrentPerson, setHomePage} from "../redux/AppReducer";
 
 
-const PersonPageContainer = (props) => {
     let mapStateToProps = (state) => {
         return {
-            person: props.person,
-            state: state.app.person,
+            person: state.app.currentPerson,
             subjectsCount: state.app.subjectsCount,
-            subjects: state.subjects,
+            subjects: state.app.subjects,
             currentPerson: state.app.currentPerson
         }
     };
 
     let mapDispatchToProps = (dispatch) => {
         return {
-            setSubjectsCount: (person) => {
-                dispatch(setSubjectsCount(person))
-            },
             setCurrentPerson: (person) => {
                 dispatch(setCurrentPerson(person))
             },
             back: () => {
                 dispatch(back())
+            },
+            setHomePage: () => {
+                dispatch(setHomePage())
             }
         }
     };
-    connect(mapStateToProps, mapDispatchToProps)(PersonPage)
-};
 
-export default PersonPageContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(PersonPage);

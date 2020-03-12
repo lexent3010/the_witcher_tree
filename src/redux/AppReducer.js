@@ -1,8 +1,8 @@
 const SET_CURRENT_PERSON = 'SET_CURRENT_PERSON';
 const SET_STATE = 'SET_STATE';
-const SET_SUBJECTS_COUNT = 'SET_SUBJECTS_COUNT';
-const SET_SUBJECTS = 'SET_SUBJECTS';
 const BACK = 'BACK';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const SET_HOME_PAGE = 'SET_HOME_PAGE';
 
 
 let initialState = {
@@ -247,9 +247,10 @@ let initialState = {
             parent: 3
         }
     ],              // Новый массив данных заливать сюда!)
-    currentPerson: {},
-    subjectsCount: null,
-    subjects: []
+    currentPerson: null,
+    currentPage: null,
+    subjectsCount: null,        // Все побочные объекты специально оставил пустыми, что бы заполнить тогда,
+    subjects: null,             // когда UI попросит.
 };
 
 
@@ -274,39 +275,55 @@ const AppReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_CURRENT_PERSON:
             return {
-                ...state, currentPerson: action.person
-
+                ...state,
+                currentPerson: [action.person],
+                subjects: state.person.filter(p => p.parent === action.person.id),
+                subjectsCount: state.person.filter(p => [action.person.id]
+                        .every(el => p.listOfParentsId.includes(el))).length,
+                currentPage: 'personPage'
             };
         case SET_STATE:
             return {
-                ...state, person: state.person.map(p => ({            // Добавляет новый ключ "Список всех родителей"
-                    id: p.id,                                         // который потом используется для подсчета подчиненных
+                ...state,
+                person: state.person.map(p => ({               // Добавляет новый ключ "Список всех родителей"
+                    id: p.id,                                  // который потом используется для подсчета подчиненных
                     name: p.name,
                     image: p.image,
                     post: p.post,
                     parent: p.parent,
                     listOfParentsId: addSubjectsCount(p.parent, state.person)
-                }))
+                })),
+                currentPerson: state.person.filter(p => p.parent === undefined)
             };
-        case SET_SUBJECTS_COUNT:
-            return {
-                ...state, subjectsCount: state.app.person           // Фильтрует по родителям, длинна массива есть
-                    .filter(p => [action.person.id]                 // количество подчиненных
-                        .every(el => p.listOfParentsId.includes(el))).length
-            };
-        case SET_SUBJECTS:
-            return {
-                ...state,
-                /*subjects: [state.app.person                        // Изначально пустой массив, поэтому подчеркивает, но работает
-                    .filter(p => p.parent === currentPerson.id)]*/   // Когда он вызывается, там уже есть данные.
-            };                                                     // Возможно так делать не стоит, сообщите если я не прав.
         case BACK:
-            let back = (currentPerson) => {
-                state.person.find(p => p.id === currentPerson.parent)
+            let back = (parentId) => {
+                if (parentId === undefined) {
+                    return {
+                        ...state,
+                        currentPage: 'homePage',
+                        currentPerson: state.person.filter(p => p.parent === undefined)
+                    };
+                }
+                return {...state, currentPerson: state.person.filter(p => p.id === parentId)}
             };
-        return {
-            ...state, currentPerson: back(state.currentPerson)
-        };
+           return back(state.currentPerson[0].parent);
+
+        case SET_CURRENT_PAGE:
+            return {
+                ...state, currentPage: () => {
+                    if (state.currentPerson.parent === undefined) {
+                        return 'homePage'
+                    }
+                    return 'personPage'
+                }
+            };
+        case SET_HOME_PAGE:
+            return {
+              ...state,
+                currentPage: 'homePage',
+                currentPerson: state.person.filter(p => p.parent === undefined)
+            };
+
         default:
             return state;
     }
@@ -314,7 +331,8 @@ const AppReducer = (state = initialState, action) => {
 
 export const setState = () => ({type: SET_STATE});
 export const setCurrentPerson = (person) => ({type: SET_CURRENT_PERSON, person});
-export const setSubjectsCount = (person) => ({type: SET_SUBJECTS_COUNT, person});
 export const back = () => ({type: BACK});
+export const setCurrentPage = () => ({type: SET_CURRENT_PAGE});
+export const setHomePage = () => ({type: SET_HOME_PAGE});
 
 export default AppReducer;

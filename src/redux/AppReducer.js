@@ -1,8 +1,8 @@
 const SET_CURRENT_PERSON = 'SET_CURRENT_PERSON';
 const SET_STATE = 'SET_STATE';
 const BACK = 'BACK';
-const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_HOME_PAGE = 'SET_HOME_PAGE';
+const CHANGE_PERSON = 'CHANGE_PERSON';
 
 
 let initialState = {
@@ -251,6 +251,7 @@ let initialState = {
     currentPage: null,
     subjectsCount: null,        // Все побочные объекты специально оставил пустыми, что бы заполнить тогда,
     subjects: null,             // когда UI попросит.
+    checkBox: null
 };
 
 
@@ -262,7 +263,7 @@ const AppReducer = (state = initialState, action) => {
             if (counter === undefined) {
                 return acc;
             }
-            let currentItem = state.filter(p => p.id === counter);
+            let currentItem = state.filter(person => person.id === counter);
             counter = currentItem[0].parent;
             if (counter === undefined) {
                 return acc
@@ -272,58 +273,78 @@ const AppReducer = (state = initialState, action) => {
         };
         return findParent(state)
     };
+    const changePerson = (person, where) => {
+        let siblingPerson = state.person.filter(p => p.parent === state.currentPerson[0].parent);
+        let switchingPerson = (siblingPerson, person, where) => {
+            switch (where) {
+                case 'NEXT':
+                    return siblingPerson.indexOf(person) + 1;
+                case 'PREVIOUS':
+                    return siblingPerson.indexOf(person) - 1;
+                default:
+                    return null
+            }
+        };
+        return siblingPerson[switchingPerson(siblingPerson, person, where)]
+    };
+    const setCurrentPerson = (person) => {
+        let setCheckBox = (person, siblingPerson) => {
+            if  (siblingPerson.length <= 1) {
+                return null;
+            } else if (changePerson(person, 'NEXT') === undefined) {
+                return 'notNext'
+            } else if (changePerson(person, 'PREVIOUS') === undefined) {
+                return 'notPrevious'
+            } else {
+                return 'ok'
+            }
+        };
+        return {
+            ...state,
+            currentPerson: [person],
+            subjects: state.person.filter(el => el.parent === person.id),
+            subjectsCount: state.person.filter(element => [person.id]
+                .every(el => element.listOfParentsId.includes(el))).length,
+            currentPage: 'personPage',
+            checkBox: setCheckBox(person, state.person.filter(p => p.parent === person.parent)),
+        };
+    };
+    const setHomePage = () => {
+        return {
+            ...state,
+            currentPage: 'homePage',
+            currentPerson: state.person.filter(person => person.parent === undefined)
+        };
+    };
     switch (action.type) {
         case SET_CURRENT_PERSON:
-            return {
-                ...state,
-                currentPerson: [action.person],
-                subjects: state.person.filter(p => p.parent === action.person.id),
-                subjectsCount: state.person.filter(p => [action.person.id]
-                        .every(el => p.listOfParentsId.includes(el))).length,
-                currentPage: 'personPage'
-            };
+           return setCurrentPerson(action.person);
         case SET_STATE:
             return {
                 ...state,
-                person: state.person.map(p => ({               // Добавляет новый ключ "Список всех родителей"
-                    id: p.id,                                  // который потом используется для подсчета подчиненных
-                    name: p.name,
-                    image: p.image,
-                    post: p.post,
-                    parent: p.parent,
-                    listOfParentsId: addSubjectsCount(p.parent, state.person)
+                person: state.person.map(person => ({            // Добавляет новый ключ "Список всех родителей"
+                    id: person.id,                               // который потом используется для подсчета подчиненных
+                    name: person.name,
+                    image: person.image,
+                    post: person.post,
+                    parent: person.parent,
+                    listOfParentsId: addSubjectsCount(person.parent, state.person)
                 })),
-                currentPerson: state.person.filter(p => p.parent === undefined)
+                currentPerson: state.person.filter(person => person.parent === undefined)
             };
         case BACK:
             let back = (parentId) => {
+                let person = state.person.filter(person => person.id === parentId);
                 if (parentId === undefined) {
-                    return {
-                        ...state,
-                        currentPage: 'homePage',
-                        currentPerson: state.person.filter(p => p.parent === undefined)
-                    };
+                    return setHomePage();
                 }
-                return {...state, currentPerson: state.person.filter(p => p.id === parentId)}
+                return setCurrentPerson(person[0])
             };
-           return back(state.currentPerson[0].parent);
-
-        case SET_CURRENT_PAGE:
-            return {
-                ...state, currentPage: () => {
-                    if (state.currentPerson.parent === undefined) {
-                        return 'homePage'
-                    }
-                    return 'personPage'
-                }
-            };
+            return back(state.currentPerson[0].parent);
         case SET_HOME_PAGE:
-            return {
-              ...state,
-                currentPage: 'homePage',
-                currentPerson: state.person.filter(p => p.parent === undefined)
-            };
-
+            return setHomePage();
+        case CHANGE_PERSON:
+            return setCurrentPerson(changePerson(state.currentPerson[0], action.where));
         default:
             return state;
     }
@@ -332,7 +353,7 @@ const AppReducer = (state = initialState, action) => {
 export const setState = () => ({type: SET_STATE});
 export const setCurrentPerson = (person) => ({type: SET_CURRENT_PERSON, person});
 export const back = () => ({type: BACK});
-export const setCurrentPage = () => ({type: SET_CURRENT_PAGE});
 export const setHomePage = () => ({type: SET_HOME_PAGE});
+export const changePerson = (where) => ({type: CHANGE_PERSON, where});
 
 export default AppReducer;

@@ -4,9 +4,21 @@ import React from 'react';
 const PersonPage = (props) => {
     return (
         <div>
+            <div>{props.checkBox}</div>
             <div>{props.subjectsCount}</div>
             <div onClick={props.back}>
                 back
+            </div>
+            {(() => {
+                if (props.checkBox === 'ok' || 'notNext') {
+                    return <div onClick={() => {
+                        props.changePerson('PREVIOUS')
+                    }}>previous</div>
+                }
+            })()}
+            <div onClick={() => {
+                props.changePerson('NEXT')
+            }}>next
             </div>
             <div onClick={props.setHomePage}><img src={require('../images/logo.png')} alt='logo' width='100'/></div>
             {props.currentPerson.map(person => <div>

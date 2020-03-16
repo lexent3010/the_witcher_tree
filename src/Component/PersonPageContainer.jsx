@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import PersonPage from "./PersonPage";
-import {back, setCurrentPerson, setHomePage} from "../redux/AppReducer";
+import {back, changePerson, setCurrentPerson, setHomePage} from "../redux/AppReducer";
 
 
     let mapStateToProps = (state) => {
@@ -8,7 +8,8 @@ import {back, setCurrentPerson, setHomePage} from "../redux/AppReducer";
             person: state.app.currentPerson,
             subjectsCount: state.app.subjectsCount,
             subjects: state.app.subjects,
-            currentPerson: state.app.currentPerson
+            currentPerson: state.app.currentPerson,
+            checkBox: state.app.checkBox
         }
     };
 
@@ -22,6 +23,9 @@ import {back, setCurrentPerson, setHomePage} from "../redux/AppReducer";
             },
             setHomePage: () => {
                 dispatch(setHomePage())
+            },
+            changePerson: (where) => {
+                dispatch(changePerson(where))
             }
         }
     };

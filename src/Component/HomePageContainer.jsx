@@ -3,9 +3,9 @@ import HomePage from "./HomePage";
 import {setCurrentPerson} from "../redux/AppReducer";
 
 const mapStateToProps = (state) => {
-return {
-    currentPerson: state.app.currentPerson
-}
+    return {
+        currentPerson: state.app.currentPerson
+    }
 };
 
 const mapDispatchToProps = (dispatch) => {

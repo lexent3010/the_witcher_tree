@@ -274,7 +274,7 @@ const AppReducer = (state = initialState, action) => {
         return findParent(state)
     };
     const changePerson = (person, where) => {
-        let siblingPerson = state.person.filter(p => p.parent === state.currentPerson[0].parent);
+        let siblingPerson = state.person.filter(p => p.parent === person.parent);
         let switchingPerson = (siblingPerson, person, where) => {
             switch (where) {
                 case 'NEXT':

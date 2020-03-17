@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import store from './redux/Store';
-import {setState} from "./redux/AppReducer";
+import {setHomePage, setState} from "./redux/AppReducer";
 import {Provider} from "react-redux";
 
 let renderTree = (state) => {
@@ -16,6 +16,7 @@ let renderTree = (state) => {
 };
 
 store.dispatch(setState());
+store.dispatch(setHomePage());
 renderTree(store.getState());
 
 store.subscribe(() => {

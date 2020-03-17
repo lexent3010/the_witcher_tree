@@ -1,6 +1,6 @@
 const SET_CURRENT_PERSON = 'SET_CURRENT_PERSON';
 const SET_STATE = 'SET_STATE';
-const BACK = 'BACK';
+const BACK = 'BACK';                                    // Константы для кейсов и AC
 const SET_HOME_PAGE = 'SET_HOME_PAGE';
 const CHANGE_PERSON = 'CHANGE_PERSON';
 
@@ -246,7 +246,7 @@ let initialState = {
             image: "bran.jpg",
             parent: 3
         }
-    ],              // Новый массив данных заливать сюда!)
+    ],  //     <<< Новый массив данных заливать сюда!)
     currentPerson: null,
     currentPage: null,
     subjectsCount: null,        // Все побочные объекты специально оставил пустыми, что бы заполнить тогда,
@@ -277,7 +277,7 @@ const AppReducer = (state = initialState, action) => {
         let siblingPerson = state.person.filter(p => p.parent === person.parent);
         let switchingPerson = (siblingPerson, person, where) => {
             switch (where) {
-                case 'NEXT':
+                case 'NEXT':                                            // Логика кнопок < и >
                     return siblingPerson.indexOf(person) + 1;
                 case 'PREVIOUS':
                     return siblingPerson.indexOf(person) - 1;
@@ -287,10 +287,10 @@ const AppReducer = (state = initialState, action) => {
         };
         return siblingPerson[switchingPerson(siblingPerson, person, where)]
     };
-    const setCurrentPerson = (person) => {
+    const setCurrentPerson = (person) => {                        // Функция для выбора текущего персонажа
         let setCheckBox = (person, siblingPerson) => {
             if  (siblingPerson.length <= 1) {
-                return null;
+                return null;                                      // check box для зануления кнопок < и >
             } else if (changePerson(person, 'NEXT') === undefined) {
                 return 'notNext'
             } else if (changePerson(person, 'PREVIOUS') === undefined) {
@@ -310,7 +310,7 @@ const AppReducer = (state = initialState, action) => {
         };
     };
     const setHomePage = () => {
-        return {
+        return {                                               // Функция для перехода на домашнюю страницу
             ...state,
             currentPage: 'homePage',
             currentPerson: state.person.filter(person => person.parent === undefined)
@@ -329,14 +329,13 @@ const AppReducer = (state = initialState, action) => {
                     post: person.post,
                     parent: person.parent,
                     listOfParentsId: addSubjectsCount(person.parent, state.person)
-                })),
-                currentPerson: state.person.filter(person => person.parent === undefined)
+                }))
             };
         case BACK:
             let back = (parentId) => {
                 let person = state.person.filter(person => person.id === parentId);
                 if (parentId === undefined) {
-                    return setHomePage();
+                    return setHomePage();                          // Логика кнопки 'назад'
                 }
                 return setCurrentPerson(person[0])
             };
@@ -352,8 +351,8 @@ const AppReducer = (state = initialState, action) => {
 
 export const setState = () => ({type: SET_STATE});
 export const setCurrentPerson = (person) => ({type: SET_CURRENT_PERSON, person});
-export const back = () => ({type: BACK});
-export const setHomePage = () => ({type: SET_HOME_PAGE});
+export const back = () => ({type: BACK});                            // Для простоты понимания, и меньшего количества
+export const setHomePage = () => ({type: SET_HOME_PAGE});            // багов, было решено использовать action creator
 export const changePerson = (where) => ({type: CHANGE_PERSON, where});
 
 export default AppReducer;

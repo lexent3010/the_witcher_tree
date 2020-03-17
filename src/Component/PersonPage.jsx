@@ -4,31 +4,28 @@ import React from 'react';
 const PersonPage = (props) => {
     return (
         <div>
-            <div>{(() => {
-               return  props.subjectsCount !== 0 ? <div>{props.subjectsCount}</div> : null
-            })()}</div>
+            {(() => {
+                return props.subjectsCount !== 0 && props.person[0].parent !== undefined ?
+                    <div>{props.subjectsCount}</div> : null
+            })()}
             <div onClick={props.back}>
                 back
             </div>
 
             {(() => {
-                if (props.checkBox === 'ok' || props.checkBox === 'notNext') {
-                    return <div onClick={() => {
-                        props.changePerson('PREVIOUS')
-                    }}>previous</div>
-                }
+                return props.checkBox === 'ok' || props.checkBox === 'notNext' ? <div onClick={() => {
+                    props.changePerson('PREVIOUS')
+                }}>previous</div> : null
             })()}
             {(() => {
-                if (props.checkBox === 'ok' || props.checkBox === 'notPrevious') {
-                    return <div onClick={() => {
-                        props.changePerson('NEXT')
-                    }}>next
-                    </div>
-                }
+                return props.checkBox === 'ok' || props.checkBox === 'notPrevious' ? <div onClick={() => {
+                    props.changePerson('NEXT')
+                }}>next
+                </div> : null
             })()}
 
             <div onClick={props.setHomePage}><img src={require('../images/logo.png')} alt='logo' width='100'/></div>
-            {props.currentPerson.map(person => <div>
+            {props.currentPerson.map(person => <div key={person.id}>
                 <img src={require('../images/' + person.image)} alt={person.name}/>
                 {person.name}
                 {person.post}

@@ -3,7 +3,7 @@ import React from 'react';
 
 const PersonPage = (props) => {
     return (
-        <div>
+        <main>
             {(() => {
                 return props.subjectsCount !== 0 && props.person[0].parent !== undefined ?
                     <div>{props.subjectsCount}</div> : null
@@ -42,7 +42,7 @@ const PersonPage = (props) => {
                         <div>{person.post}</div>
                     </div>)}
             </div>
-        </div>
+        </main>
     )
 };
 

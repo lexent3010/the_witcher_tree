@@ -289,8 +289,8 @@ const AppReducer = (state = initialState, action) => {
     };
     const setCurrentPerson = (person) => {                        // Функция для выбора текущего персонажа
         let setCheckBox = (person, siblingPerson) => {
-            if  (siblingPerson.length <= 1) {
-                return null;                                      // check box для зануления кнопок < и >
+            if  (siblingPerson.length <= 1) {                     // check box для зануления кнопок < и >,
+                return null;                                      // если следующего, или предыдущего нет.
             } else if (changePerson(person, 'NEXT') === undefined) {
                 return 'notNext'
             } else if (changePerson(person, 'PREVIOUS') === undefined) {
@@ -333,11 +333,11 @@ const AppReducer = (state = initialState, action) => {
             };
         case BACK:
             let back = (parentId) => {
-                let person = state.person.filter(person => person.id === parentId);
+                let person = state.person.find(person => person.id === parentId);
                 if (parentId === undefined) {
                     return setHomePage();                          // Логика кнопки 'назад'
                 }
-                return setCurrentPerson(person[0])
+                return setCurrentPerson(person)
             };
             return back(state.currentPerson[0].parent);
         case SET_HOME_PAGE:

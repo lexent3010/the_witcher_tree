@@ -256,6 +256,7 @@ let initialState = {
 
 
 const AppReducer = (state = initialState, action) => {
+    window.state = state;
     const addSubjectsCount = (parentId, state) => {                // С помощью рекурсии добавляет значение id родителей всех
         let counter = parentId;                                   // уровней в соответствующий ключ
         let acc = [counter];
@@ -303,7 +304,7 @@ const AppReducer = (state = initialState, action) => {
             ...state,
             currentPerson: [person],
             subjects: state.person.filter(el => el.parent === person.id),
-            subjectsCount: state.person.filter(element => [person.id]
+            allSubjectsCount: state.person.filter(element => [person.id]
                 .every(el => element.listOfParentsId.includes(el))).length,
             currentPage: 'personPage',
             checkBox: setCheckBox(person, state.person.filter(p => p.parent === person.parent)),
@@ -333,11 +334,11 @@ const AppReducer = (state = initialState, action) => {
             };
         case BACK:
             let back = (parentId) => {
-                let person = state.person.find(person => person.id === parentId);
+                let person = state.person.filter(person => person.id === parentId);
                 if (parentId === undefined) {
                     return setHomePage();                          // Логика кнопки 'назад'
                 }
-                return setCurrentPerson(person)
+                return setCurrentPerson(person[0])
             };
             return back(state.currentPerson[0].parent);
         case SET_HOME_PAGE:

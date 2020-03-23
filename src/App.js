@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import HomePageContainer from "./Component/HomePageContainer";
-import PersonPageContainer from "./Component/PersonPageContainer";
+import HomePageContainer from "./Component/HomePage/HomePageContainer";
+import PersonPageContainer from "./Component/PersonPage/PersonPageContainer";
 
 const App = (props) => {
     switch (props.currentPage) {

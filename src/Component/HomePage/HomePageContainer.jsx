@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import HomePage from "./HomePage";
-import {setCurrentPerson} from "../redux/AppReducer";
+import {setCurrentPerson} from "../../redux/AppReducer";
 
 const mapStateToProps = (state) => {
     return {

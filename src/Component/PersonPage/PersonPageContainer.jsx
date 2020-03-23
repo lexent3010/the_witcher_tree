@@ -1,12 +1,12 @@
 import {connect} from "react-redux";
 import PersonPage from "./PersonPage";
-import {back, changePerson, setCurrentPerson, setHomePage} from "../redux/AppReducer";
+import {back, changePerson, setCurrentPerson, setHomePage} from "../../redux/AppReducer";
 
 
     let mapStateToProps = (state) => {
         return {
             person: state.app.currentPerson,
-            subjectsCount: state.app.subjectsCount,
+            allSubjectsCount: state.app.allSubjectsCount,
             subjects: state.app.subjects,
             currentPerson: state.app.currentPerson,
             checkBox: state.app.checkBox

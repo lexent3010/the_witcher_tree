@@ -24,13 +24,11 @@ const PersonPage = (props) => {
                                          alt={person.name}/>
                                     {(() => {
                                         return props.allSubjectsCount !== 0 && props.person[0].parent !== undefined ?
-                                            <div className={s.personSubjectsCount}>
-                                                <div className={s.subjectsCountContainer}>
+                                                <div className={s.personSubjectsCount}>
                                                     <img className={s.subjectBorder}
                                                          src={require('../../images/site/subjectBorder.png')} alt=''/>
                                                     <div className={s.subjectsCount}>{props.allSubjectsCount}</div>
                                                 </div>
-                                            </div>
                                             : null
                                     })()}
                                 </div>)}

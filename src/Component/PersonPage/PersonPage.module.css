@@ -1,6 +1,13 @@
-svg circle {
-
+.personName, .personPost, .subjectName, .subjectPost, .backBlock {
+    font-family: Crimson Text;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 110%;
+    background: -webkit-linear-gradient(#F4DCB3, #5C3D06);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
+
 
 img {
     width: 150px;
@@ -34,17 +41,17 @@ img {
     height: 1301px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding-top: 5%;
     background-image: url(../../images/site/bg1440_2-0.jpg);
     color: white;
 }
 
 .personPageMain {
-    width: 80%;
-    height: 80%;
+    height: 1060px;
+    width: 1180px;
     display: grid;
     grid-template-areas: "b p l" "e e e" "s s s";
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1.5fr 1fr 1.5fr;
     grid-template-columns: 1fr 1fr 1fr;
 }
 
@@ -52,19 +59,23 @@ img {
     grid-area: b;
     justify-self: start;
     align-self: start;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid rgba(219, 174, 100, 0.2);
+    font-size: 26px;
 }
 
 .personBlock {
     grid-area: p;
     display: flex;
     flex-direction: column;
+    min-height: 500px;
+    min-width: 574px;
 }
 
 .personAvatar_selectButton {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    height: 70%;
 }
 
 .previousButton {
@@ -92,6 +103,7 @@ img {
 .personAvatar_subjectsCount {
     width: 60%;
     position: relative;
+    height: 100%;
 
 }
 
@@ -103,26 +115,23 @@ img {
 }
 
 .personSubjectsCount {
+    width: 68px;
+    height: 71px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
-    bottom: 0%;
-    width: 100%;
-}
-
-.subjectsCountContainer {
-    position: relative;
-    text-align: center;
-    vertical-align: middle;
+    bottom: 5%;
+    left: 5%;
 }
 
 .subjectBorder {
-    position: absolute;
-    left: 0%;
-    bottom: 0%;
-    height: 100%;
+width: inherit;
 }
 
 .subjectsCount {
-
+    z-index: 3;
+    position: absolute;
 }
 
 
@@ -134,7 +143,21 @@ img {
 }
 
 .personInfo {
-    text-align: center;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.personName {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 61px;
+    line-height: 128.6%;
+}
+.personPost {
+    margin-top: 15px;
+    font-size: 17px;
 }
 
 .logoBlock {
@@ -165,6 +188,28 @@ img {
 
 .subjects {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
+}
+.subjectElement {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 290px;
+    height: 250px;
+    padding-top: 30px;
+
+}
+.subjectAvatar img {
+    border-radius: 50%;
+    min-height: 166px;
+    min-width: 166px;
+}
+.subjectName {
+    font-size: 32px;
+}
+.subjectPost {
+    margin-top: 10px;
+    font-size: 17px;
 }

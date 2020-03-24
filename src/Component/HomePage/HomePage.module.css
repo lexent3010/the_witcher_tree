@@ -70,10 +70,6 @@
     text-align: center;
 }
 
-@media screen and (min-width: 1441px) {
-
-}
-
 @media screen and (max-width: 1024px) {
     .fractionsBlock {
         height: 252px;

@@ -1,4 +1,4 @@
-.personName, .personPost, .subjectName, .subjectPost, .backBlock {
+.personName, .personPost, .subjectName, .subjectPost, .backBlock, .subjectsCount, .subjectsCountOfSubject {
     font-family: Crimson Text;
     font-style: normal;
     font-weight: normal;
@@ -6,23 +6,6 @@
     background: -webkit-linear-gradient(#F4DCB3, #5C3D06);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-}
-
-
-img {
-    width: 150px;
-}
-
-.text {
-    font-family: Crimson Text;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 32px;
-    line-height: 110%;
-    background: -webkit-linear-gradient(#F4DCB3, #5C3D06);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-align: center;
 }
 
 .background {
@@ -38,11 +21,12 @@ img {
     max-width: 100%;
     box-sizing: border-box;
     width: 1440px;
-    height: 1301px;
+    height: 1721px;
     display: flex;
     justify-content: center;
-    padding-top: 5%;
+    padding-top: 3%;
     background-image: url(../../images/site/bg1440_2-0.jpg);
+    background-color: #0C0C0C;
     color: white;
 }
 
@@ -61,6 +45,10 @@ img {
     align-self: start;
     border-bottom: 1px solid rgba(219, 174, 100, 0.2);
     font-size: 26px;
+}
+
+.backBlock:hover {
+    border-bottom: 1px solid rgb(219, 174, 100);
 }
 
 .personBlock {
@@ -86,18 +74,19 @@ img {
 }
 
 .button {
-    opacity: 0.2;
-    border: 1px solid #DBAE64;
+    border: 1px solid rgba(219, 174, 100, 0.2);
     box-sizing: border-box;
     border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-self: center;
     width: 46px;
     height: 46px;
-
 }
 
-.button span {
-    font-size: 30px;
+.button:hover {
+    border: 1px solid rgb(219, 174, 100);
 }
 
 .personAvatar_subjectsCount {
@@ -126,12 +115,13 @@ img {
 }
 
 .subjectBorder {
-width: inherit;
+    width: inherit;
 }
 
 .subjectsCount {
-    z-index: 3;
+    z-index: 1;
     position: absolute;
+    font-size: 29px;
 }
 
 
@@ -149,12 +139,14 @@ width: inherit;
     align-items: center;
     justify-content: flex-start;
 }
+
 .personName {
     font-style: normal;
     font-weight: normal;
     font-size: 61px;
     line-height: 128.6%;
 }
+
 .personPost {
     margin-top: 15px;
     font-size: 17px;
@@ -184,6 +176,7 @@ width: inherit;
 .subjectsBlock {
     grid-area: s;
     justify-self: center;
+    margin-top: 20px;
 }
 
 .subjects {
@@ -191,6 +184,7 @@ width: inherit;
     justify-content: center;
     flex-wrap: wrap;
 }
+
 .subjectElement {
     display: flex;
     flex-direction: column;
@@ -198,18 +192,61 @@ width: inherit;
     align-items: center;
     width: 290px;
     height: 250px;
-    padding-top: 30px;
+    padding-top: 15px;
 
 }
-.subjectAvatar img {
-    border-radius: 50%;
-    min-height: 166px;
-    min-width: 166px;
+
+.subjectAvatar_subjectCount {
+    position: relative;
+    height: 196px;
+    width: 196px;
+    text-align: center;
 }
+
+.subjectAvatar {
+    border-radius: 50%;
+    height: 166px;
+    width: 166px;
+}
+
+.personSubjectsCountOfSubject {
+    width: 68px;
+    height: 71px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.subjectBorderOfSubject {
+    width: inherit;
+}
+
+.subjectsCountOfSubject {
+    z-index: 1;
+    position: absolute;
+    font-size: 29px;
+}
+
 .subjectName {
     font-size: 32px;
 }
+
 .subjectPost {
     margin-top: 10px;
     font-size: 17px;
+}
+
+@media screen and (max-width: 1024px) {
+
+}
+
+@media screen and (max-width: 768px) {
+
+}
+
+@media screen and (max-width: 320px) {
+
 }

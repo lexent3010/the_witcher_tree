@@ -15,7 +15,7 @@ const PersonPage = (props) => {
                                     <div className={s.button} onClick={() => {
                                         props.changePerson('PREVIOUS')
                                     }}>
-                                        <span>&lt;</span>
+                                        <img src={require('../../images/site/1.svg')} alt=""/>
                                     </div> : null
                             })()}</div>
                             {props.currentPerson.map(person =>
@@ -23,12 +23,12 @@ const PersonPage = (props) => {
                                     <img className={s.personAvatar} src={require('../../images/' + person.image)}
                                          alt={person.name}/>
                                     {(() => {
-                                        return props.allSubjectsCount !== 0 && props.person[0].parent !== undefined ?
-                                                <div className={s.personSubjectsCount}>
-                                                    <img className={s.subjectBorder}
-                                                         src={require('../../images/site/subjectBorder.png')} alt=''/>
-                                                    <div className={s.subjectsCount}>{props.allSubjectsCount}</div>
-                                                </div>
+                                        return person.subjectsCount !== 0 && props.person[0].parent !== undefined ?
+                                            <div className={s.personSubjectsCount}>
+                                                <img className={s.subjectBorder}
+                                                     src={require('../../images/site/subjectBorder.png')} alt=''/>
+                                                <div className={s.subjectsCount}>{person.subjectsCount}</div>
+                                            </div>
                                             : null
                                     })()}
                                 </div>)}
@@ -37,7 +37,7 @@ const PersonPage = (props) => {
                                     <div className={s.button} onClick={() => {
                                         props.changePerson('NEXT')
                                     }}>
-                                        <span>&gt;</span>
+                                        <img src={require('../../images/site/2.svg')} alt=""/>
                                     </div> : null
                             })()}</div>
                         </div>
@@ -60,9 +60,20 @@ const PersonPage = (props) => {
                                 <div className={s.subjectElement} key={person.id} onClick={() => {
                                     props.setCurrentPerson(person)
                                 }}>
-                                    <div className={s.subjectAvatar}>
-                                        <img src={require('../../images/' + person.image)} alt={person.name}
+                                    <div className={s.subjectAvatar_subjectCount}>
+                                        <img className={s.subjectAvatar} src={require('../../images/' + person.image)}
+                                             alt={person.name}
                                              width='100'/>
+                                        {(() => {
+                                            return person.subjectsCount !== 0 ?
+                                                <div className={s.personSubjectsCountOfSubject}>
+                                                    <img className={s.subjectBorderOfSubject}
+                                                         src={require('../../images/site/subjectBorder.png')} alt=''/>
+                                                    <div
+                                                        className={s.subjectsCountOfSubject}>{person.subjectsCount}</div>
+                                                </div>
+                                                : null
+                                        })()}
                                     </div>
                                     <div className={s.subjectName}>{person.name}</div>
                                     <div className={s.subjectPost}>{person.post}</div>

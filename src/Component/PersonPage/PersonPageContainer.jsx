@@ -6,7 +6,6 @@ import {back, changePerson, setCurrentPerson, setHomePage} from "../../redux/App
     let mapStateToProps = (state) => {
         return {
             person: state.app.currentPerson,
-            allSubjectsCount: state.app.allSubjectsCount,
             subjects: state.app.subjects,
             currentPerson: state.app.currentPerson,
             checkBox: state.app.checkBox

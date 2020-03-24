@@ -249,14 +249,12 @@ let initialState = {
     ],  //     <<< Новый массив данных заливать сюда!)
     currentPerson: null,
     currentPage: null,
-    subjectsCount: null,        // Все побочные объекты специально оставил пустыми, что бы заполнить тогда,
-    subjects: null,             // когда UI попросит.
-    checkBox: null
+    subjects: null,             // Все побочные объекты специально оставил пустыми, что бы заполнить тогда,
+    checkBox: null              // когда UI попросит.
 };
 
 
 const AppReducer = (state = initialState, action) => {
-    window.state = state;
     const addSubjectsCount = (parentId, state) => {                // С помощью рекурсии добавляет значение id родителей всех
         let counter = parentId;                                   // уровней в соответствующий ключ
         let acc = [counter];
@@ -304,8 +302,6 @@ const AppReducer = (state = initialState, action) => {
             ...state,
             currentPerson: [person],
             subjects: state.person.filter(el => el.parent === person.id),
-            allSubjectsCount: state.person.filter(element => [person.id]
-                .every(el => element.listOfParentsId.includes(el))).length,
             currentPage: 'personPage',
             checkBox: setCheckBox(person, state.person.filter(p => p.parent === person.parent)),
         };
@@ -317,29 +313,43 @@ const AppReducer = (state = initialState, action) => {
             currentPerson: state.person.filter(person => person.parent === undefined)
         };
     };
+    const setState = () => {
+        let newState = {
+            ...state,
+            person: state.person.map(person => ({            // Добавляет новый ключ "Список всех родителей"
+                id: person.id,                               // который потом используется для подсчета подчиненных
+                name: person.name,
+                image: person.image,
+                post: person.post,
+                parent: person.parent,
+                listOfParentsId: addSubjectsCount(person.parent, state.person)
+            }))
+        };
+        return {
+            ...state,
+            person: newState.person.map(person => ({            // Добавляет новый ключ "Список всех родителей"
+                id: person.id,                               // который потом используется для подсчета подчиненных
+                name: person.name,
+                image: person.image,
+                post: person.post,
+                parent: person.parent,
+                subjectsCount: newState.person.filter(element => [person.id]
+                    .every(el => element.listOfParentsId.includes(el))).length,
+            }))}
+    };
+    const back = (parentId) => {
+        let person = state.person.filter(person => person.id === parentId);
+        if (parentId === undefined) {
+            return setHomePage();                          // Логика кнопки 'назад'
+        }
+        return setCurrentPerson(person[0])
+    };
     switch (action.type) {
         case SET_CURRENT_PERSON:
            return setCurrentPerson(action.person);
         case SET_STATE:
-            return {
-                ...state,
-                person: state.person.map(person => ({            // Добавляет новый ключ "Список всех родителей"
-                    id: person.id,                               // который потом используется для подсчета подчиненных
-                    name: person.name,
-                    image: person.image,
-                    post: person.post,
-                    parent: person.parent,
-                    listOfParentsId: addSubjectsCount(person.parent, state.person)
-                }))
-            };
+            return setState();
         case BACK:
-            let back = (parentId) => {
-                let person = state.person.filter(person => person.id === parentId);
-                if (parentId === undefined) {
-                    return setHomePage();                          // Логика кнопки 'назад'
-                }
-                return setCurrentPerson(person[0])
-            };
             return back(state.currentPerson[0].parent);
         case SET_HOME_PAGE:
             return setHomePage();

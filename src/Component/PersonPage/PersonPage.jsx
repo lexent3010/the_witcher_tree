@@ -15,7 +15,7 @@ const PersonPage = (props) => {
                                     <div className={style.button} onClick={() => {
                                         props.changePerson('PREVIOUS')
                                     }}>
-                                        <img src={require('../../images/site/1.svg')} alt=""/>
+                                        <img src={require('../../images/site/1.svg')} alt="&lt;"/>
                                     </div> : null
                             })()}</div>
                             {props.currentPerson.map(person =>
@@ -37,7 +37,7 @@ const PersonPage = (props) => {
                                     <div className={style.button} onClick={() => {
                                         props.changePerson('NEXT')
                                     }}>
-                                        <img src={require('../../images/site/2.svg')} alt=""/>
+                                        <img src={require('../../images/site/2.svg')} alt="&gt;"/>
                                     </div> : null
                             })()}</div>
                         </div>

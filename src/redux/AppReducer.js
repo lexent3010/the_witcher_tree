@@ -6,7 +6,7 @@ const CHANGE_PERSON = 'CHANGE_PERSON';
 
 
 let initialState = {
-    person: [
+    persons: [
         {
             id: 1,
             name: "Nilfgaard",
@@ -262,8 +262,8 @@ const AppReducer = (state = initialState, action) => {
             if (counter === undefined) {
                 return acc;
             }
-            let currentItem = state.filter(person => person.id === counter);
-            counter = currentItem[0].parent;
+            let currentItem = state.find(person => person.id === counter);
+            counter = currentItem.parent;
             if (counter === undefined) {
                 return acc
             }
@@ -273,7 +273,7 @@ const AppReducer = (state = initialState, action) => {
         return findParent(state)
     };
     const changePerson = (person, where) => {
-        let siblingPerson = state.person.filter(p => p.parent === person.parent);
+        let siblingPerson = state.persons.filter(p => p.parent === person.parent);
         let switchingPerson = (siblingPerson, person, where) => {
             switch (where) {
                 case 'NEXT':                                            // Логика кнопок < и >
@@ -301,48 +301,48 @@ const AppReducer = (state = initialState, action) => {
         return {
             ...state,
             currentPerson: [person],
-            subjects: state.person.filter(el => el.parent === person.id),
+            subjects: state.persons.filter(el => el.parent === person.id),
             currentPage: 'personPage',
-            checkBox: setCheckBox(person, state.person.filter(p => p.parent === person.parent)),
+            checkBox: setCheckBox(person, state.persons.filter(p => p.parent === person.parent)),
         };
     };
     const setHomePage = () => {
         return {                                               // Функция для перехода на домашнюю страницу
             ...state,
             currentPage: 'homePage',
-            currentPerson: state.person.filter(person => person.parent === undefined)
+            currentPerson: state.persons.filter(person => person.parent === undefined)
         };
     };
     const setState = () => {
         let newState = {
             ...state,
-            person: state.person.map(person => ({            // Добавляет новый ключ "Список всех родителей"
+            persons: state.persons.map(person => ({            // Добавляет новый ключ "Список всех родителей"
                 id: person.id,                               // который потом используется для подсчета подчиненных
                 name: person.name,
                 image: person.image,
                 post: person.post,
                 parent: person.parent,
-                listOfParentsId: addSubjectsCount(person.parent, state.person)
+                listOfParentsId: addSubjectsCount(person.parent, state.persons)
             }))
         };
         return {
             ...state,
-            person: newState.person.map(person => ({            // Добавляет новый ключ "Список всех родителей"
+            persons: newState.persons.map(person => ({            // Добавляет новый ключ "Список всех родителей"
                 id: person.id,                               // который потом используется для подсчета подчиненных
                 name: person.name,
                 image: person.image,
                 post: person.post,
                 parent: person.parent,
-                subjectsCount: newState.person.filter(element => [person.id]
+                subjectsCount: newState.persons.filter(element => [person.id]
                     .every(el => element.listOfParentsId.includes(el))).length,
             }))}
     };
     const back = (parentId) => {
-        let person = state.person.filter(person => person.id === parentId);
+        let person = state.persons.find(person => person.id === parentId);
         if (parentId === undefined) {
             return setHomePage();                          // Логика кнопки 'назад'
         }
-        return setCurrentPerson(person[0])
+        return setCurrentPerson(person)
     };
     switch (action.type) {
         case SET_CURRENT_PERSON:

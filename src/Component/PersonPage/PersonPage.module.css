@@ -24,7 +24,7 @@
     height: 1721px;
     display: flex;
     justify-content: center;
-    padding-top: 3%;
+    padding-top: 65px;
     background-image: url(../../images/site/bg1440_2-0.jpg);
     background-color: #0C0C0C;
     color: white;
@@ -133,6 +133,7 @@
 }
 
 .personInfo {
+    text-align: center;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -179,6 +180,10 @@
     margin-top: 20px;
 }
 
+.elementBlock img {
+    content: url(../../images/site/element1440-768.png);
+}
+
 .subjects {
     display: flex;
     justify-content: center;
@@ -188,10 +193,9 @@
 .subjectElement {
     display: flex;
     flex-direction: column;
-    justify-content: start;
     align-items: center;
     width: 290px;
-    height: 250px;
+    height: 352px;
     padding-top: 15px;
 
 }
@@ -232,6 +236,7 @@
 
 .subjectName {
     font-size: 32px;
+    text-align: center;
 }
 
 .subjectPost {
@@ -240,13 +245,158 @@
 }
 
 @media screen and (max-width: 1024px) {
+    .personPage {
+        width: 1024px;
+        background-image: url(../../images/site/bg1024_2-0.jpg);
+    }
 
+    .personPageMain {
+        width: 905px;
+    }
+
+    .subjectElement {
+        width: 208px;
+    }
 }
 
 @media screen and (max-width: 768px) {
+    .personPage {
+        width: 768px;
+        height: 2094px;
+        background-image: url(../../images/site/bg768_2-0.jpg);
+    }
 
+    .personPageMain {
+        width: 676px;
+    }
+
+    .previousButton {
+        width: 10%;
+    }
+
+    .nextButton {
+        width: 10%;
+    }
+
+    .personBlock {
+        min-width: 450px;
+    }
+
+    .personAvatar_subjectsCount {
+        width: 75%;
+    }
 }
 
 @media screen and (max-width: 320px) {
+    .personPage {
+        width: 320px;
+        height: 1532px;
+        background-image: url(../../images/site/bg320_1-0.jpg);
+        background-repeat: no-repeat;
+    }
 
+    .personPageMain {
+        position: relative;
+        width: 272px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .backBlock {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .personBlock {
+        min-width: auto;
+        min-height: auto;
+        padding-top: 80px;
+    }
+
+    .logoBlock {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .personAvatar_subjectsCount {
+        width: 168px;
+        height: 168px;
+    }
+    .personSubjectsCount {
+        width: 30px;
+        height: 30px;
+    }
+    .subjectsCount {
+        font-size: 14px;
+    }
+
+    .personAvatar_selectButton {
+        justify-content: center;
+    }
+
+    .personName {
+        font-size: 41px;
+    }
+
+    .personPost {
+        font-size: 17px;
+    }
+
+    .button {
+        width: 36px;
+        height: 36px;
+    }
+
+    .previousButton {
+        width: 20%;
+    }
+
+    .nextButton {
+        width: 20%;
+    }
+
+    .elementBlock {
+        align-self: center;
+    }
+
+    .subjectAvatar {
+        width: inherit;
+        height: inherit;
+    }
+
+    .subjectAvatar_subjectCount {
+        width: 120px;
+        height: 120px;
+    }
+
+    .personSubjectsCountOfSubject {
+        width: 30px;
+        height: 30px;
+    }
+
+    .subjectsCountOfSubject {
+        font-size: 14px;
+    }
+
+    .subjectElement {
+        width: 130px;
+        height: 224px;
+    }
+
+    .subjectName {
+        font-size: 19px;
+    }
+
+    .subjectPost {
+        font-size: 12px;
+    }
+    .elementBlock {
+    margin-top: 30px;
+    }
+
+    .elementBlock img {
+        content: url(../../images/site/element320.png);
+    }
 }

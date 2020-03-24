@@ -52,7 +52,11 @@ const PersonPage = (props) => {
                         </div>
                     </div>
                     <div className={s.elementBlock}>
-                        <img src={require('../../images/site/element1440-768.png')} alt="element"/>
+                        {(() => {
+                            if (props.currentPerson[0].subjectsCount !== 0) {
+                                return <img alt="element"/>
+                            }
+                        })()}
                     </div>
                     <div className={s.subjectsBlock}>
                         <div className={s.subjects}>

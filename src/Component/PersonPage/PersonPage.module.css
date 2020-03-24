@@ -337,7 +337,7 @@
         min-width: auto;
         min-height: auto;
         width: 262px;
-        height: 300px;
+        height: auto;
         padding-top: 80px;
     }
 

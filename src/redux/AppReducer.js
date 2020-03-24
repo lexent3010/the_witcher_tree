@@ -256,7 +256,7 @@ let initialState = {
 
 const AppReducer = (state = initialState, action) => {
     const addSubjectsCount = (parentId, state) => {                // С помощью рекурсии добавляет значение id родителей всех
-        let counter = parentId;                                   // уровней в соответствующий ключ
+        let counter = parentId;                                    // уровней в соответствующий ключ
         let acc = [counter];
         let findParent = (state) => {
             if (counter === undefined) {
@@ -327,8 +327,8 @@ const AppReducer = (state = initialState, action) => {
         };
         return {
             ...state,
-            persons: newState.persons.map(person => ({            // Добавляет новый ключ "Список всех родителей"
-                id: person.id,                               // который потом используется для подсчета подчиненных
+            persons: newState.persons.map(person => ({        // Добавляет новый ключ
+                id: person.id,                               // "Количество подчиненных всех уровней"
                 name: person.name,
                 image: person.image,
                 post: person.post,

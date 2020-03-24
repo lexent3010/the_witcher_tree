@@ -323,13 +323,27 @@
         width: 272px;
     }
 
+    .backBlock {
+        top: 0;
+        left: 0;
+    }
+
+    .logoBlock {
+        top: 0;
+        right: 0;
+    }
+
     .personBlock {
         min-width: auto;
         min-height: auto;
+        width: 262px;
+        height: 300px;
         padding-top: 80px;
     }
 
     .personAvatar_subjectsCount {
+        min-height: auto;
+        min-width: auto;
         width: 168px;
         height: 168px;
     }
@@ -362,10 +376,12 @@
 
     .previousButton {
         width: 20%;
+        justify-content: flex-start;
     }
 
     .nextButton {
         width: 20%;
+        justify-content: flex-end;
     }
 
     .subjectAvatar {
@@ -387,12 +403,18 @@
         font-size: 14px;
     }
 
+    .subjectsBlock {
+        min-width: auto;
+        width: 260px;
+    }
+
     .subjectElement {
         width: 130px;
         height: 224px;
     }
 
     .subjectName {
+        margin-top: 10px;
         font-size: 19px;
     }
 

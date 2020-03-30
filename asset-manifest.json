@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/the_witcher_tree/static/css/main.749e6d5d.chunk.css",
+    "main.css": "/the_witcher_tree/static/css/main.25356b30.chunk.css",
     "main.js": "/the_witcher_tree/static/js/main.690eaa17.chunk.js",
     "main.js.map": "/the_witcher_tree/static/js/main.690eaa17.chunk.js.map",
     "runtime-main.js": "/the_witcher_tree/static/js/runtime-main.a8a035c7.js",
@@ -8,9 +8,9 @@
     "static/js/2.ffc96d16.chunk.js": "/the_witcher_tree/static/js/2.ffc96d16.chunk.js",
     "static/js/2.ffc96d16.chunk.js.map": "/the_witcher_tree/static/js/2.ffc96d16.chunk.js.map",
     "index.html": "/the_witcher_tree/index.html",
-    "precache-manifest.c38684bf400b38482f0400e168eece76.js": "/the_witcher_tree/precache-manifest.c38684bf400b38482f0400e168eece76.js",
+    "precache-manifest.8f9a9fe364fa8986888f23f3a0fadc83.js": "/the_witcher_tree/precache-manifest.8f9a9fe364fa8986888f23f3a0fadc83.js",
     "service-worker.js": "/the_witcher_tree/service-worker.js",
-    "static/css/main.749e6d5d.chunk.css.map": "/the_witcher_tree/static/css/main.749e6d5d.chunk.css.map",
+    "static/css/main.25356b30.chunk.css.map": "/the_witcher_tree/static/css/main.25356b30.chunk.css.map",
     "static/js/2.ffc96d16.chunk.js.LICENSE.txt": "/the_witcher_tree/static/js/2.ffc96d16.chunk.js.LICENSE.txt",
     "static/media/1.svg": "/the_witcher_tree/static/media/1.d87e6ffe.svg",
     "static/media/2.svg": "/the_witcher_tree/static/media/2.40ecd72c.svg",
@@ -62,7 +62,7 @@
   "entrypoints": [
     "static/js/runtime-main.a8a035c7.js",
     "static/js/2.ffc96d16.chunk.js",
-    "static/css/main.749e6d5d.chunk.css",
+    "static/css/main.25356b30.chunk.css",
     "static/js/main.690eaa17.chunk.js"
   ]
 }

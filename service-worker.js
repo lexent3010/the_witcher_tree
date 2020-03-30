@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/the_witcher_tree/precache-manifest.8f9a9fe364fa8986888f23f3a0fadc83.js"
+  "/the_witcher_tree/precache-manifest.3aee609e71735cd92a4fdaec8d2c9a91.js"
 );
 
 self.addEventListener('message', (event) => {

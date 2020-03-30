@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "84c108cc462c0219d6448a0c69608d38",
+    "revision": "24120aed6b8e1a55282b6368b1e3c6c8",
     "url": "/the_witcher_tree/index.html"
   },
   {
-    "revision": "8c8e00c543932ec4ae7d",
-    "url": "/the_witcher_tree/static/css/main.25356b30.chunk.css"
+    "revision": "6873f9c5ec2f481984dc",
+    "url": "/the_witcher_tree/static/css/main.c0fe94c7.chunk.css"
   },
   {
     "revision": "f6f8b057592f40d58c2e",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/the_witcher_tree/static/js/2.ffc96d16.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "8c8e00c543932ec4ae7d",
-    "url": "/the_witcher_tree/static/js/main.690eaa17.chunk.js"
+    "revision": "6873f9c5ec2f481984dc",
+    "url": "/the_witcher_tree/static/js/main.5bf54d9f.chunk.js"
   },
   {
     "revision": "70ca56e927ecb5bb3e02",
@@ -48,32 +48,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/the_witcher_tree/static/media/auckes.87da1ffa.jpg"
   },
   {
-    "revision": "94efc6572dcb6201c378ec9eb291125b",
-    "url": "/the_witcher_tree/static/media/bg1024_1-0.94efc657.jpg"
-  },
-  {
-    "revision": "113892d05bd6eed1da3b3eca745c9ee0",
-    "url": "/the_witcher_tree/static/media/bg1024_2-0.113892d0.jpg"
-  },
-  {
-    "revision": "f1e25d90d1c7e8210bcd6eb398d91cfb",
-    "url": "/the_witcher_tree/static/media/bg1440_1-0.f1e25d90.jpg"
-  },
-  {
     "revision": "d294201b632d2383cc579174c2476c39",
     "url": "/the_witcher_tree/static/media/bg1440_2-0.d294201b.jpg"
-  },
-  {
-    "revision": "ae7869e004f62baf05a16214233635c8",
-    "url": "/the_witcher_tree/static/media/bg1440_2-01.ae7869e0.jpg"
-  },
-  {
-    "revision": "bcb5fd05b57ac5ffe8559ee96468dd35",
-    "url": "/the_witcher_tree/static/media/bg768_1-0.bcb5fd05.jpg"
-  },
-  {
-    "revision": "917c4ce070f478ee84a4cb9ff34673e6",
-    "url": "/the_witcher_tree/static/media/bg768_2-0.917c4ce0.jpg"
   },
   {
     "revision": "9c04d432cf309fc747b0ca583a4c01de",

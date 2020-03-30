@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/the_witcher_tree/static/css/main.25356b30.chunk.css",
-    "main.js": "/the_witcher_tree/static/js/main.690eaa17.chunk.js",
-    "main.js.map": "/the_witcher_tree/static/js/main.690eaa17.chunk.js.map",
+    "main.css": "/the_witcher_tree/static/css/main.c0fe94c7.chunk.css",
+    "main.js": "/the_witcher_tree/static/js/main.5bf54d9f.chunk.js",
+    "main.js.map": "/the_witcher_tree/static/js/main.5bf54d9f.chunk.js.map",
     "runtime-main.js": "/the_witcher_tree/static/js/runtime-main.a8a035c7.js",
     "runtime-main.js.map": "/the_witcher_tree/static/js/runtime-main.a8a035c7.js.map",
     "static/js/2.ffc96d16.chunk.js": "/the_witcher_tree/static/js/2.ffc96d16.chunk.js",
     "static/js/2.ffc96d16.chunk.js.map": "/the_witcher_tree/static/js/2.ffc96d16.chunk.js.map",
     "index.html": "/the_witcher_tree/index.html",
-    "precache-manifest.8f9a9fe364fa8986888f23f3a0fadc83.js": "/the_witcher_tree/precache-manifest.8f9a9fe364fa8986888f23f3a0fadc83.js",
+    "precache-manifest.3aee609e71735cd92a4fdaec8d2c9a91.js": "/the_witcher_tree/precache-manifest.3aee609e71735cd92a4fdaec8d2c9a91.js",
     "service-worker.js": "/the_witcher_tree/service-worker.js",
-    "static/css/main.25356b30.chunk.css.map": "/the_witcher_tree/static/css/main.25356b30.chunk.css.map",
+    "static/css/main.c0fe94c7.chunk.css.map": "/the_witcher_tree/static/css/main.c0fe94c7.chunk.css.map",
     "static/js/2.ffc96d16.chunk.js.LICENSE.txt": "/the_witcher_tree/static/js/2.ffc96d16.chunk.js.LICENSE.txt",
     "static/media/1.svg": "/the_witcher_tree/static/media/1.d87e6ffe.svg",
     "static/media/2.svg": "/the_witcher_tree/static/media/2.40ecd72c.svg",
@@ -18,13 +18,7 @@
     "static/media/anahid.jpg": "/the_witcher_tree/static/media/anahid.feb7268c.jpg",
     "static/media/ardal.jpg": "/the_witcher_tree/static/media/ardal.e57c5e06.jpg",
     "static/media/auckes.jpg": "/the_witcher_tree/static/media/auckes.87da1ffa.jpg",
-    "static/media/bg1024_1-0.jpg": "/the_witcher_tree/static/media/bg1024_1-0.94efc657.jpg",
-    "static/media/bg1024_2-0.jpg": "/the_witcher_tree/static/media/bg1024_2-0.113892d0.jpg",
-    "static/media/bg1440_1-0.jpg": "/the_witcher_tree/static/media/bg1440_1-0.f1e25d90.jpg",
     "static/media/bg1440_2-0.jpg": "/the_witcher_tree/static/media/bg1440_2-0.d294201b.jpg",
-    "static/media/bg1440_2-01.jpg": "/the_witcher_tree/static/media/bg1440_2-01.ae7869e0.jpg",
-    "static/media/bg768_1-0.jpg": "/the_witcher_tree/static/media/bg768_1-0.bcb5fd05.jpg",
-    "static/media/bg768_2-0.jpg": "/the_witcher_tree/static/media/bg768_2-0.917c4ce0.jpg",
     "static/media/borsodi.jpg": "/the_witcher_tree/static/media/borsodi.9c04d432.jpg",
     "static/media/bran.jpg": "/the_witcher_tree/static/media/bran.fd6ff0b4.jpg",
     "static/media/calveit.jpg": "/the_witcher_tree/static/media/calveit.919406ce.jpg",
@@ -62,7 +56,7 @@
   "entrypoints": [
     "static/js/runtime-main.a8a035c7.js",
     "static/js/2.ffc96d16.chunk.js",
-    "static/css/main.25356b30.chunk.css",
-    "static/js/main.690eaa17.chunk.js"
+    "static/css/main.c0fe94c7.chunk.css",
+    "static/js/main.5bf54d9f.chunk.js"
   ]
 }

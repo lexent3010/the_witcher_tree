@@ -11,10 +11,15 @@
 .background {
     width: 100%;
     height: 100%;
+    min-width: 100vw;
+    min-height: 100vh;
     background-color: #717171;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     display: flex;
     justify-content: center;
+    background-image: url(../.././images/site/bg1440_2-0.jpg);
+    background-repeat: no-repeat;
+    background-position: top center;
 }
 
 .personPage {
@@ -25,8 +30,6 @@
     display: flex;
     justify-content: center;
     padding-top: 65px;
-    background-image: url(../../images/site/bg1440_2-0.jpg);
-    background-color: #0C0C0C;
     color: white;
 }
 
@@ -247,9 +250,12 @@
 }
 
 @media screen and (max-width: 1024px) {
+    .background {
+        background-color: #0C0C0C;
+    }
+
     .personPage {
         width: 1024px;
-        background-image: url(../../images/site/bg1024_2-0.jpg);
     }
 
     .personPageMain {
@@ -265,7 +271,6 @@
     .personPage {
         width: 768px;
         height: 2094px;
-        background-image: url(../../images/site/bg768_2-0.jpg);
     }
 
     .personPageMain {
@@ -315,7 +320,6 @@
     .personPage {
         width: 320px;
         height: 1532px;
-        background-image: url(../../images/site/bg320_1-0.jpg);
         background-repeat: no-repeat;
     }
 

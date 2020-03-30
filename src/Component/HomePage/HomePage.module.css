@@ -5,6 +5,9 @@
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     display: flex;
     justify-content: center;
+    background-image: url(../.././images/site/bg1440_2-0.jpg);
+    background-repeat: no-repeat;
+    background-position: top center;
 }
 
 .homePage {
@@ -12,12 +15,11 @@
     box-sizing: border-box;
     width: 1440px;
     height: 910px;
+    min-width: 100vw;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(../.././images/site/bg1440_1-0.jpg);
-    background-repeat: no-repeat;
-    background-color: #0C0C0C;
 }
 
 .homePageMain {
@@ -74,6 +76,10 @@
 }
 
 @media screen and (max-width: 1024px) {
+    .background {
+        background-color: #0C0C0C;
+    }
+
     .fractionsBlock {
         height: 252px;
     }
@@ -86,7 +92,6 @@
     .homePage {
         width: 1024px;
         height: 768px;
-        background-image: url(../.././images/site/bg1024_1-0.jpg);
     }
 
     .homePageMain {
@@ -105,7 +110,6 @@
     .homePage {
         width: 768px;
         height: 1024px;
-        background-image: url(../.././images/site/bg768_1-0.jpg);
     }
 
     .homePageMain {
@@ -124,7 +128,6 @@
     .homePage {
         width: 320px;
         height: 719px;
-        background-image: url(../.././images/site/bg320_1-0.jpg);
         font-size: 19px;
     }
 

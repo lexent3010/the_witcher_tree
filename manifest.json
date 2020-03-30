@@ -1,0 +1,15 @@
+{
+  "short_name": "The Witcher Tree",
+  "name": "The Witcher Tree",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/the-witcher-tree/",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

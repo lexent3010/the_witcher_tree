@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0af9b5cd58a9b2c55c88acd751fe51b4",
+    "revision": "77100068e4a1d8dfd4277ec3c027d069",
     "url": "/the_witcher_tree/index.html"
   },
   {
-    "revision": "550142967a154fcefea5",
-    "url": "/the_witcher_tree/static/css/main.60c8a84e.chunk.css"
+    "revision": "8f1694ea053a122da22f",
+    "url": "/the_witcher_tree/static/css/main.1350ee2d.chunk.css"
   },
   {
     "revision": "f6f8b057592f40d58c2e",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/the_witcher_tree/static/js/2.ffc96d16.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "550142967a154fcefea5",
+    "revision": "8f1694ea053a122da22f",
     "url": "/the_witcher_tree/static/js/main.5bf54d9f.chunk.js"
   },
   {

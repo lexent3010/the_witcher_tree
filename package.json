@@ -2,7 +2,7 @@
   "name": "the_witcher_tree",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://lexent3010.github.io/the_witcher_tree/",
+  "homepage": "https://lexent3010.github.io/the_witcher_tree",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.1",
